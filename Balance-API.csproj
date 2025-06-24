@@ -21,9 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Models\" />
+    <Folder Include="Application\Interfaces\" />
+    <Folder Include="Application\Services\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
+    <Folder Include="Domain\Entities\" />
+    <Folder Include="Infrastucture\" />
   </ItemGroup>
 
 </Project>
