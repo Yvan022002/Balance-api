@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantGlobalization>false</InvariantGlobalization>
     <RootNamespace>Balance_API</RootNamespace>
   </PropertyGroup>
 
@@ -12,11 +12,16 @@
     <None Remove=".gitignore" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include=".gitignore" />
-  </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.sqlServer" Version="9.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.6">
+		
+
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
@@ -26,8 +31,7 @@
     <Folder Include="Application\Services\" />
     <Folder Include="Controllers\" />
     <Folder Include="Domain\Entities\" />
-    <Folder Include="Infrastucture\Data\" />
-    <Folder Include="Infrastucture\Repositories\" />
+    <Folder Include="Infrastructure\Repositories\" />
   </ItemGroup>
 
 </Project>
