@@ -1,4 +1,4 @@
-﻿namespace Balance_API.Models
+﻿namespace Balance_API.Domain.Entities
 {
     public enum TransactionStatus
     {
@@ -15,7 +15,10 @@
         public DateTime Date { get; set; }
         public TransactionStatus Status { get; set; } = TransactionStatus.Pending;
 
+        public int CardId { get; set; }
+        public Card? Card { get; set; }
+
         public int UserId { get; set; }
-        public User User { get; set; }
+        public User? User { get; set; }
     }
 }

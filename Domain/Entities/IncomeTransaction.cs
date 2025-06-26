@@ -1,4 +1,4 @@
-﻿namespace Balance_API.Models
+﻿namespace Balance_API.Domain.Entities
 {
     public class IncomeTransaction : Transaction
     {

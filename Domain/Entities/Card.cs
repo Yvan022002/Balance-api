@@ -1,4 +1,4 @@
-﻿namespace Balance_API.Models
+﻿namespace Balance_API.Domain.Entities
 {
     public class Card
     {
@@ -10,6 +10,6 @@
         public int Code { get; set; }
 
         public int UserId { get; set; }
-        public User User { get; set; }
+        public User? User { get; set; }
     }
 }

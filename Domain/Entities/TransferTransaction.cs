@@ -1,11 +1,8 @@
-﻿namespace Balance_API.Models
+﻿namespace Balance_API.Domain.Entities
 {
-    public class TransferTransaction : Transaction
+    public class TransferTransaction : Transaction 
     {
-        public int? ToCardId { get; set; }
-        public Card? ToCard { get; set; }
-
-        public int? ContactId { get; set; }
+        public int ContactId { get; set; }
         public Contact? Contact { get; set; }
 
     }
