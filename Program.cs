@@ -1,4 +1,5 @@
 ﻿
+using Balance_API.Application.Interfaces;
 using Balance_API.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,8 @@ namespace Balance_API
 
             builder.Services.AddControllers();
             builder.Services.AddDbContext<BalanceDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<ITokenService,ITokenService>();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
