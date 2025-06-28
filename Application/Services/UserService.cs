@@ -1,13 +1,14 @@
 ﻿using Balance_API.Application.Interfaces;
 using Balance_API.Application.Models;
 using Balance_API.Domain.Entities;
+using Balance_API.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace Balance_API.Application.Services
 {
     public class UserService : IUserService
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly ITokenService _tokenService;
         public UserService(UserRepository userRepository,IPasswordHasher<User> passwordHasher,ITokenService tokenService)
