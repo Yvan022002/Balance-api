@@ -17,9 +17,9 @@ namespace Balance_API.Application.Services
             _tokenService = tokenService;
         }
        
-        public async Task Register(RegisterDto Dto)
+        public async Task<User> Register(RegisterDto Dto)
         {
-            if (await _userRepository.GetByEmailAsync(Dto.Email) == null)
+            if (await _userRepository.GetByEmailAsync(Dto.Email) != null)
             {
                 throw new Exception($"this email is already used : {Dto.Email}");
             }
@@ -29,8 +29,9 @@ namespace Balance_API.Application.Services
             };
             user.Password = _passwordHasher.HashPassword(user, Dto.Password);
 
-            await _userRepository.AddAsync(user);
+           await _userRepository.AddAsync(user);
 
+            return user;
         }
         public async Task<string> Login(LoginDto Dto)
         {

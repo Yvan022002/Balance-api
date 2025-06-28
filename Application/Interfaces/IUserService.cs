@@ -5,7 +5,7 @@ namespace Balance_API.Application.Interfaces
 {
     public interface IUserService
     {
-        public Task Register(RegisterDto Dto);
+        public Task<User> Register(RegisterDto Dto);
         public Task<string> Login(LoginDto Dto);
     }
 }
