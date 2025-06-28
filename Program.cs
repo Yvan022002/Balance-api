@@ -1,6 +1,10 @@
 ﻿
 using Balance_API.Application.Interfaces;
+using Balance_API.Application.Services;
+using Balance_API.Domain.Entities;
 using Balance_API.Infrastructure.Data;
+using Balance_API.Infrastructure.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Balance_API
@@ -18,7 +22,10 @@ namespace Balance_API
 
             builder.Services.AddControllers();
             builder.Services.AddDbContext<BalanceDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            builder.Services.AddScoped<ITokenService,ITokenService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+            builder.Services.AddScoped<ITokenService,TokenService>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -32,12 +39,7 @@ namespace Balance_API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            using (var scope = app.Services.CreateScope())
-            {
-                var db = scope.ServiceProvider.GetRequiredService<BalanceDbContext>();
-                Console.WriteLine(db.Database.GetDbConnection().ConnectionString);
-                Console.WriteLine(db.Database.CanConnect() ? " Connexion OK" : "Connexion échouée");
-            }
+
 
             app.UseHttpsRedirection();
 
@@ -45,13 +47,6 @@ namespace Balance_API
 
 
             app.MapControllers();
-            using (var scope = app.Services.CreateScope())
-            {
-                var db = scope.ServiceProvider.GetRequiredService<BalanceDbContext>();
-                Console.WriteLine("Chaîne : " + db.Database.GetDbConnection().ConnectionString);
-                Console.WriteLine(db.Database.CanConnect() ? "✔ Connexion OK" : "❌ Connexion échouée");
-            }
-
 
             app.Run();
         }
