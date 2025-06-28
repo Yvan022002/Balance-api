@@ -11,9 +11,12 @@ public class UserRepository : IUserRepository
     {
         _dbContext = dbContext;
     }
-    public Task AddAsync(User user)
+    public async Task AddAsync(User user)
     {
-        throw new NotImplementedException();
+        _dbContext.Users.Add(user);
+        await SaveAsync();
+         
+
     }
 
     public void Delete(User user)
