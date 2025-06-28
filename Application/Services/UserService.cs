@@ -11,7 +11,7 @@ namespace Balance_API.Application.Services
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly ITokenService _tokenService;
-        public UserService(UserRepository userRepository,IPasswordHasher<User> passwordHasher,ITokenService tokenService)
+        public UserService(IUserRepository userRepository,IPasswordHasher<User> passwordHasher,ITokenService tokenService)
         {
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
